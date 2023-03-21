@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    
+    <header class="header"> <h1 class="game-title">Rock Paper Scissors</h1></header>
+
+    <div class="score-board">
+
+        <div id="player-label" class="badge">Player</div>
+
+        <div id="computer-label" class="badge">Auto</div>
+
+        <span id="player-score">0</span>:<span id="computer-score">0</span>
+
+    </div>
+    
+    <div class="choices">
+
+        <div id="rock" class="choice-img" >
+            <img src="images/cuterock.png" alt="">
+        </div>
+
+        <div id="paper" class="choice-img">
+            <img src="images/cutepaper.png" alt="">
+        </div>
+
+        <div id="scissors" class="choice-img">
+            <img src="images/cutescissors.png" alt="">
+        </div>
+
+    </div>
+
+
+    <div class="results-container">
+
+        <div class="player-choice-div">
+            <h3 id="player-choice-text">Player chose:<span id="player-chose"></span></h3>
+        </div>
+
+        <div id="player-chose-img-div">
+            <img src="#">
+        </div>
+
+        <div class="computer-choice-div">
+            <h3 id="computer-choice-text">Computer chose:<span id="computer-chose"></span></h3>
+        </div>
+
+        <div id="computer-choice-img-div">
+            <img src="#">
+        </div>
+
+    </di>
+
+    <div class="outcome">
+
+        <h3 id="outcome-text">Outcome:<span id="outcome"></span></h3>
+        <!-- <p id="outcome-msg">Paper beats Rock!</p> -->
+
+    </div>
+
+
+
+    <script defer src="script.js"></script>
+</body>
+</html>
