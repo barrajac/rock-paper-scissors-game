@@ -9,7 +9,7 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    
+    <main> 
     <header class="header"> <h1 class="game-title">Rock Paper Scissors</h1></header>
 
     <div class="score-board">
@@ -41,32 +41,47 @@
 
     <div class="results-container">
 
-        <div class="player-choice-div">
+        <div class="player-choice-div box1">
             <h3 class="chose-text">Player chose:<span id="player-chose"></span></h3>
         </div>
 
-        <div id="player-chose-img">
+        <div class="player-chose-img box2">
             <img src="#">
         </div>
 
-        <div class="computer-choice-div">
+        <div class="computer-choice-div box3">
             <h3 class="chose-text">Computer chose:<span id="computer-chose"></span></h3>
         </div>
 
-        <div id="computer-choice-img">
+        <div class="computer-choice-img box4">
             <img src="#">
         </div>
 
     </div>
 
-    <div class="outcome">
+    <div class="outcome-container">
 
-        <h3 id="outcome-text">Outcome:<span id="outcome"></span></h3>
+        <h3 class="outcome-text">Outcome:<span id="outcome"> (item) beats (item)</span></h3>
         <!-- <p id="outcome-msg">Paper beats Rock!</p> -->
 
     </div>
+    </main>
 
+    <div class="game-over-window">
+        <div class="game-over-container">
+            <div class="section1">
+                <h2 class="chose-text">Game Over</h2>
+            </div>
 
+            <div class="section2">
+                <!-- <h2 class="chose-text"></h2> -->
+            </div>
+
+            <div class="button-div">
+                <input type="button" value="Play Again">
+            </div>
+        </div>
+    </div>
 
     <script defer src="script.js"></script>
 </body>
