@@ -1,36 +1,82 @@
-//pseudocode//
-// declare variables at the top to keep organized
-// ***include notes of what would happen on the screen***
-//player hovers over to choices (image-divs of RPS)
-//when player clicks on choice:
-//       that same choice appears to the right of "You chose:"
-//       the random choice chosen by computer appears to the left of "Computer chose:"
-//       to the right of "Outcome:" prints template literal
-//          if on outcome player beats Comp, then temperate literal  states "Player beats Computer"
-//          if outcome is Comp beats Player, then outcome prints "Comp beats computer"
-// Number is incremented in scoreboard for entity that won that round
-// Screen stays this way until playe clicks on another choice to execute next round
-//Player clicks on another choice
-//cache all the RPS images into one variable as the possible choices
-//when clicked on an option (ex. rock img), that option shows up next to "Player chose:"
-//Generate a random computer choice fxn, that randomly choses RPS:
-// store RPS choices in array
-// can use Math.floor(Math.random()) + 3 (or the length of array)
-//Make computer choice show up next to "Computer chose:" after Player chose
-//Create fxn that compares the results to determine who wins:
-//if player's choice === computer's choice, then it's a tie!, zero points given, return
-//if player === "rock" && computer === "paper", then Comp++ pt, then return
-//if player === "rock" && computer === "scissors", then Player++ pt, then return
-//if player === "paper" && computer === "rock", then Player++ pt, then return
-//if player === "paper" && computer === "scissors", then Comp++ pt, then return
-//if player === "scissors" && computer === "rock", then Comp++ pt, then return
-//if player === "scissors" && computer === "paper", then Player++ pt, then return
-//look into switch statements for scenarios^
+let playerScore = 0; //had to chng const to let
+let computerScore = 0;
+const playerScoreSpan = document.querySelector("#player-score");
+const computerScoreSpan = document.querySelector("#computer-score");
+const scoreBoardDiv = document.querySelector(".score-board");
+const playerChoiceImg = document.querySelector(".player-choice-img");
+const computerChoiceImg = document.querySelector(".computer-choice-img");
+const outcomeMsg = document.querySelector(".outcome > h3");
+const rockDiv = document.querySelector("#rock");
+const paperDiv = document.querySelector("#paper");
+const scissorsDiv = document.querySelector("#scissors");
+const choicesArray = ["rock", "paper", "scissors"];
 
-//if Player's score or Computer's score === 5; then stop game and declare winner
-//have result and outcome section disappear and be replaced with who won/lost
-//include button below to reset, called "play again"
+// Generate random RPS choice for Computer
+function getComputerChoice() {
+  const randomIndex = Math.floor(Math.random() * choicesArray.length); //array has 3 elements
+  let randomChoice = choicesArray[randomIndex];
+  return randomChoice;
+}
+// console.log(getComputerChoice());  //checkpoint: random choice on console
 
-const playerScore = 0;
-const computerScore = 0;
-const playerScoreSpan = document.querySelector();
+// fxn that stores corresponding img to playerchoice
+function addPlayerChoiceImg(choice) {
+  if (choice === "rock") {
+    const img = document.createElement("img");
+    img.src = "images/cuterock.png";
+    playerChoiceImg.appendChild(img);
+  } else if (choice === "paper") {
+    const img = document.createElement("img");
+    img.src = "images/cutepaper.png";
+    playerChoiceImg.appendChild(img);
+  } else if (choice === "scissors") {
+    const img = document.createElement("img");
+    img.src = "images/cutescissors.png";
+    playerChoiceImg.appendChild(img);
+  }
+}
+
+// fxn that stores corresponding img to playerchoice
+function addComputerChoiceImg(choice) {
+  if (choice === "rock") {
+    const img = document.createElement("img");
+    img.src = "images/cuterock.png";
+    computerChoiceImg.appendChild(img);
+  } else if (choice === "paper") {
+    const img = document.createElement("img");
+    img.src = "images/cutepaper.png";
+    computerChoiceImg.appendChild(img);
+  } else if (choice === "scissors") {
+    const img = document.createElement("img");
+    img.src = "images/cutescissors.png";
+    computerChoiceImg.appendChild(img);
+  }
+}
+
+// create game fxn that carries out RPS play
+function rpsGame(userChoice) {
+  const computerChoice = getComputerChoice();
+  addComputerChoiceImg(computerChoice);
+  addPlayerChoiceImg(userChoice);
+  console.log(`player choice: ${userChoice}`);
+  console.log(`computer choice: ${computerChoice}`);
+}
+//rpsGame("rock");  //chckpoint output playerchoice and computerchoice
+
+// Make rock clickable
+rockDiv.addEventListener("click", function () {
+  rpsGame("rock");
+  //   console.log("hey you clicked on rock");
+});
+
+// make paper clickable
+paperDiv.addEventListener("click", function () {
+  rpsGame("paper");
+  //   console.log("hey you clicked on paper");
+});
+
+// make scissors clickable
+scissorsDiv.addEventListener("click", function () {
+  rpsGame("scissors");
+  //   console.log("hey you clicked on scissors")
+});

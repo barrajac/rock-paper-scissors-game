@@ -176,7 +176,7 @@ img {
     background-color: aliceblue;
     text-align: center;
     padding: 15px;
-    display: block;
+    display: none;
     /* display: block; */
 }
 
