@@ -4,9 +4,9 @@ let computerScore = 0;
 const playerScoreSpan = document.querySelector("#player-score");
 const computerScoreSpan = document.querySelector("#computer-score");
 const scoreBoardDiv = document.querySelector(".score-board");
-const playerChoiceImg = document.querySelector(".player-choice-img");
-const computerChoiceImg = document.querySelector(".computer-choice-img");
-const outcomeMsg = document.querySelector(".outcome > h3");
+// const playerChoiceImg = document.querySelector(".player-choice-img");
+// const computerChoiceImg = document.querySelector(".computer-choice-img");
+const outcome = document.querySelector(".outcome > h6");
 const rockDiv = document.querySelector("#rock");
 const paperDiv = document.querySelector("#paper");
 const scissorsDiv = document.querySelector("#scissors");
@@ -20,50 +20,61 @@ function capFirstLetter(string) {
 function getComputerChoice() {
   const randomIndex = Math.floor(Math.random() * choicesArray.length); //array has 3 elements
   let randomChoice = choicesArray[randomIndex];
-  addComputerChoiceImg(randomChoice);
+//   addComputerChoiceImg(randomChoice);
   return randomChoice;
 }
 // console.log(getComputerChoice());  //checkpoint: random choice on console
 
 //7. what happens when we win, lose, or draw per round, user score should increment
-function ganar(playerChoice, computerChoice) {
+function playerWin(playerChoice, computerChoice) {
   playerScore++; //increment winner score
   playerScoreSpan.innerHTML = playerScore; //update scoreboard
   computerScoreSpan.innerHTML = computerScore; //update scoreboard
   playerChoice = capFirstLetter(playerChoice); //cap first letter of RPS for player
   computerChoice = capFirstLetter(computerChoice); //cap first letter of RPS for computer
-  outcomeMsg.innerHTML = `${playerChoice} beats ${computerChoice}. Point for you!`;
+  outcome.innerHTML = `${playerChoice} beats ${computerChoice}. Point for you!`;
   //   console.log("Player won");
   //   console.log(playerScore);
 }
 
-function perder(playerChoice, computerChoice) {
-  console.log("Player lost");
+function computerWin(playerChoice, computerChoice) {
+  computerScore++; //increment winner score
+  computerScoreSpan.innerHTML = computerScore; //update scoreboard
+  playerScoreSpan.innerHTML = playerScore; //update scoreboard
+  playerChoice = capFirstLetter(playerChoice); //cap first letter of RPS for player
+  computerChoice = capFirstLetter(computerChoice); //cap first letter of RPS for computer
+  outcome.innerHTML = `${computerChoice} beats ${playerChoice}. Point for computer!`;
 }
 
-function empate(playerChoice, computerChoice) {
-  console.log("Draw");
+function draw(playerChoice, computerChoice) {
+  // no points for a draw/tie, no need to update scoreboard
+  playerChoice = capFirstLetter(playerChoice); //cap first letter of RPS for player
+  computerChoice = capFirstLetter(computerChoice); //cap first letter of RPS for computer
+  outcome.innerHTML = `${playerChoice} equals ${computerChoice}. Draw! No points.`;
 }
 
-//4. create the game fxn that carries out RPS play
+//4. create the game fxn that carries out RPS play   //reminder to add break; after each case action!
 function rpsGame(userChoice) {
   const computerChoice = getComputerChoice();
   switch (userChoice + computerChoice) {
     case "rockscissors":
     case "paperrock":
     case "scissorspaper":
-      ganar(userChoice, computerChoice);
+      playerWin(userChoice, computerChoice);
+      break;
       //   console.log("PLAYER WINS!");
       break;
     case "scissorsrock":
     case "rockpaper":
     case "paperscissors":
-      perder(userChoice, computerChoice);
+      computerWin(userChoice, computerChoice);
+      break;
     // console.log("PLAYER LOSES!")
     case "rockrock":
     case "paperpaper":
     case "scissorsscissors":
-      empate(userChoice, computerChoice);
+      draw(userChoice, computerChoice);
+      break;
     // console.log("DRAW!")
   }
 
@@ -77,56 +88,56 @@ function rpsGame(userChoice) {
 // Make rock clickable
 rockDiv.addEventListener("click", function () {
   rpsGame("rock");
-  addPlayerChoiceImg("rock");
+//   addPlayerChoiceImg("rock");
   //   console.log("hey you clicked on rock");
 });
 
 // make paper clickable
 paperDiv.addEventListener("click", function () {
   rpsGame("paper");
-  addPlayerChoiceImg("paper");
+//   addPlayerChoiceImg("paper");
   //   console.log("hey you clicked on paper");
 });
 
 // make scissors clickable
 scissorsDiv.addEventListener("click", function () {
   rpsGame("scissors");
-  addPlayerChoiceImg("scissors");
+//   addPlayerChoiceImg("scissors");
   //   console.log("hey you clicked on scissors")
 });
 
-//5. fxn that stores corresponding img to Player Choice so that it shows up in the results second
-function addPlayerChoiceImg(choice) {
-  if (choice === "rock") {
-    const img = document.createElement("img");
-    img.src = "images/cuterock.png";
-    playerChoiceImg.appendChild(img);
-  } else if (choice === "paper") {
-    const img = document.createElement("img");
-    img.src = "images/cutepaper.png";
-    playerChoiceImg.appendChild(img);
-  } else if (choice === "scissors") {
-    const img = document.createElement("img");
-    img.src = "images/cutescissors.png";
-    playerChoiceImg.appendChild(img);
-  } else {
-    return;
-  }
-}
+// //5. fxn that stores corresponding img to Player Choice so that it shows up in the results second
+// function addPlayerChoiceImg(choice) {
+//   if (choice === "rock") {
+//     const img = document.createElement("img");
+//     img.src = "images/cuterock.png";
+//     playerChoiceImg.appendChild(img);
+//   } else if (choice === "paper") {
+//     const img = document.createElement("img");
+//     img.src = "images/cutepaper.png";
+//     playerChoiceImg.appendChild(img);
+//   } else if (choice === "scissors") {
+//     const img = document.createElement("img");
+//     img.src = "images/cutescissors.png";
+//     playerChoiceImg.appendChild(img);
+//   } else {
+//     return;
+//   }
+// }
 
-//6. fxn that stores corresponding img to Computer Choice so that it shows up in the results second
-function addComputerChoiceImg(choice) {
-  if (choice === "rock") {
-    const img = document.createElement("img");
-    img.src = "images/cuterock.png";
-    computerChoiceImg.appendChild(img);
-  } else if (choice === "paper") {
-    const img = document.createElement("img");
-    img.src = "images/cutepaper.png";
-    computerChoiceImg.appendChild(img);
-  } else if (choice === "scissors") {
-    const img = document.createElement("img");
-    img.src = "images/cutescissors.png";
-    computerChoiceImg.appendChild(img);
-  }
-}
+// //6. fxn that stores corresponding img to Computer Choice so that it shows up in the results second
+// function addComputerChoiceImg(choice) {
+//   if (choice === "rock") {
+//     const img = document.createElement("img");
+//     img.src = "images/cuterock.png";
+//     computerChoiceImg.appendChild(img);
+//   } else if (choice === "paper") {
+//     const img = document.createElement("img");
+//     img.src = "images/cutepaper.png";
+//     computerChoiceImg.appendChild(img);
+//   } else if (choice === "scissors") {
+//     const img = document.createElement("img");
+//     img.src = "images/cutescissors.png";
+//     computerChoiceImg.appendChild(img);
+//   }
+// }
