@@ -13,6 +13,7 @@ const gameOverWindow = document.querySelector(".game-over-window");
 const gameSummary = document.querySelector(".game-summary");
 const playerChose_Div = document.querySelector(".choice-img-one");
 const computerChose_Div = document.querySelector(".choice-img-two");
+const gameOverImg_Div = document.querySelector(".game-over-img");
 
 const choicesArray = ["rock", "paper", "scissors"];
 
@@ -102,7 +103,6 @@ function rpsGame(userChoice) {
 function displayPlayerChoice(playerChoice) {
   playerChose_Div.innerHTML = "";
   const playerChoice_Img = document.createElement("img"); // we are going remove & update each time
-
   if (playerChoice === "rock") {
     playerChoice_Img.src = "images/cuterock.png";
   } else if (playerChoice === "paper") {
@@ -132,9 +132,11 @@ function endGame() {
   //is this where i'm messing up?
   if (playerScore === 5 || computerScore === 5) {
     if (playerScore > computerScore) {
-      gameSummary.innerHTML = "Congratulations, you won the game!";
+      gameSummary.innerHTML = "You won the game!";
+      displayGameOverImg();
     } else {
       gameSummary.innerHTML = "Sorry, you lost the game!";
+      displayGameOverImg();
     }
     // playerScore = 0;    //lines 117-121 move to restart game fxn, so user can see finalScore
     // computerScore = 0;
@@ -151,6 +153,18 @@ function restartGame() {
   computerScore = 0;
   computerScoreSpan.innerHTML = computerScore; //update scoreboard
   playerScoreSpan.innerHTML = playerScore; //update scoreboard
+  return;
+}
+
+function displayGameOverImg() {
+  gameOverImg_Div.innerHTML = "";
+  const gameOver_Img = document.createElement("img");
+  if (computerScore === 5) {
+    gameOver_Img.src = "images/sadtp.png";
+  } else if (playerScore === 5) {
+    gameOver_Img.src = "images/cutefire.png";
+  }
+  gameOverImg_Div.appendChild(gameOver_Img);
   return;
 }
 
