@@ -182,13 +182,15 @@ img {
 .game-over-window {
     position: absolute;
     z-index: 1;
-    top:50%;
+    top:38%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50%;
+    width: 60%;
     height: 50%;
     background-color: aliceblue;
+    border-radius: 10%;
     text-align: center;
+    font-size: 37px;
     padding: 15px;
     display: none;
     /* display: block; */
@@ -199,4 +201,17 @@ img {
     flex-direction: column;
     justify-content: space-around;
 
+}
+
+#play-again-btn {
+    margin:auto; 
+    margin-top: 15%;
+    padding:14px 16px;
+    background-color:blue;
+    color:white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    background-color: #3F4C5C;
+    opacity: 1;
+    /* background-color: #3F4C5C; */
 }

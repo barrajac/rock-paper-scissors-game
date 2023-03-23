@@ -10,6 +10,8 @@ const outcome = document.querySelector(".outcome > h6");
 const rockDiv = document.querySelector("#rock");
 const paperDiv = document.querySelector("#paper");
 const scissorsDiv = document.querySelector("#scissors");
+const playAgainBtn = document.querySelector("#play-again-btn");
+const gameOverWindow = document.querySelector(".game-over-window");
 const choicesArray = ["rock", "paper", "scissors"];
 
 function capFirstLetter(string) {
@@ -20,7 +22,7 @@ function capFirstLetter(string) {
 function getComputerChoice() {
   const randomIndex = Math.floor(Math.random() * choicesArray.length); //array has 3 elements
   let randomChoice = choicesArray[randomIndex];
-//   addComputerChoiceImg(randomChoice);
+  //   addComputerChoiceImg(randomChoice);
   return randomChoice;
 }
 // console.log(getComputerChoice());  //checkpoint: random choice on console
@@ -84,60 +86,68 @@ function rpsGame(userChoice) {
 
 //rpsGame("rock");  //chckpoint output playerchoice and computerchoice
 
+// function endGame() {
+// if (playerScore === 5 || computerScore === 5) {
+//display Game Over screen by changing display from none to block to move it fwd
+//store gameover div in variable
+//add innerHTML to include a <p> with temperate literal MSG where:
+//      if player score > computer score, then msg states You win!
+// but if player score < computer score, then msg states You lost!
+// and if player score === computer score, then msg It's a tie!
+//reset playerScore to zero
+//reset computerScore to zero
+// }
+// }
+function endGame() {
+  gameOverWindow.style.display = "block"; //is this where i'm messing up?
+  if (playerScore === 5 || computerScore === 5) {
+    if (playerScore > computerScore) {
+      resultDiv.innerHTML = "Congratulations, you won the game!";
+    } else {
+      resultDiv.innerHTML = "Sorry, you lost the game!";
+    }
+  } else if (playerScore === 5 && computerScore === 5) {
+    resultDiv.innerHTML = "It was a draw!";
+  }
+  playerScore = 0;
+  computerScore = 0;
+  return;
+}
+endGame();
+
+function restartGame() {
+  gameOverWindow.style.display = "none";
+  return;
+}
+
+// function replay() globally //create eventListener that will set game over screen display back to none with "play again" button "click"
+
+//event Listener for intro screen
+// function startGame() globally //create eventListener that will set Start screen display back to none with "Play" button "click"
+
 //2. Make event listeners for selecting RPS choice with CLICK, decided to define fxn rps game above
 // Make rock clickable
 rockDiv.addEventListener("click", function () {
   rpsGame("rock");
-//   addPlayerChoiceImg("rock");
+  //   addPlayerChoiceImg("rock");
   //   console.log("hey you clicked on rock");
 });
 
 // make paper clickable
 paperDiv.addEventListener("click", function () {
   rpsGame("paper");
-//   addPlayerChoiceImg("paper");
+  //   addPlayerChoiceImg("paper");
   //   console.log("hey you clicked on paper");
 });
 
 // make scissors clickable
 scissorsDiv.addEventListener("click", function () {
   rpsGame("scissors");
-//   addPlayerChoiceImg("scissors");
+  //   addPlayerChoiceImg("scissors");
   //   console.log("hey you clicked on scissors")
 });
 
-// //5. fxn that stores corresponding img to Player Choice so that it shows up in the results second
-// function addPlayerChoiceImg(choice) {
-//   if (choice === "rock") {
-//     const img = document.createElement("img");
-//     img.src = "images/cuterock.png";
-//     playerChoiceImg.appendChild(img);
-//   } else if (choice === "paper") {
-//     const img = document.createElement("img");
-//     img.src = "images/cutepaper.png";
-//     playerChoiceImg.appendChild(img);
-//   } else if (choice === "scissors") {
-//     const img = document.createElement("img");
-//     img.src = "images/cutescissors.png";
-//     playerChoiceImg.appendChild(img);
-//   } else {
-//     return;
-//   }
-// }
-
-// //6. fxn that stores corresponding img to Computer Choice so that it shows up in the results second
-// function addComputerChoiceImg(choice) {
-//   if (choice === "rock") {
-//     const img = document.createElement("img");
-//     img.src = "images/cuterock.png";
-//     computerChoiceImg.appendChild(img);
-//   } else if (choice === "paper") {
-//     const img = document.createElement("img");
-//     img.src = "images/cutepaper.png";
-//     computerChoiceImg.appendChild(img);
-//   } else if (choice === "scissors") {
-//     const img = document.createElement("img");
-//     img.src = "images/cutescissors.png";
-//     computerChoiceImg.appendChild(img);
-//   }
-// }
+// make replay button so that on click the gameover window disappears, scores are reset, to play again
+playAgainBtn.addEventListener("click", function () {
+  restartGame();
+});
