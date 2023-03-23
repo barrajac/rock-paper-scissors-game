@@ -11,6 +11,7 @@ const scissorsDiv = document.querySelector("#scissors");
 const playAgainBtn = document.querySelector("#play-again-btn");
 const gameOverWindow = document.querySelector(".game-over-window");
 const gameSummary = document.querySelector(".game-summary");
+const playerChose_Div = document.querySelector(".choice-img-one");
 
 const choicesArray = ["rock", "paper", "scissors"];
 
@@ -32,6 +33,7 @@ function playerWin(playerChoice, computerChoice) {
   playerScore++; //increment winner score
   playerScoreSpan.innerHTML = playerScore; //update scoreboard
   computerScoreSpan.innerHTML = computerScore; //update scoreboard
+  displayPlayerChoice(playerChoice);
   playerChoice = capFirstLetter(playerChoice); //cap first letter of RPS for player
   computerChoice = capFirstLetter(computerChoice); //cap first letter of RPS for computer
   outcome.innerHTML = `${playerChoice} beats ${computerChoice}. Point for you!`;
@@ -46,6 +48,7 @@ function computerWin(playerChoice, computerChoice) {
   computerScore++; //increment winner score
   computerScoreSpan.innerHTML = computerScore; //update scoreboard
   playerScoreSpan.innerHTML = playerScore; //update scoreboard
+  displayPlayerChoice(playerChoice);
   playerChoice = capFirstLetter(playerChoice); //cap first letter of RPS for player
   computerChoice = capFirstLetter(computerChoice); //cap first letter of RPS for computer
   outcome.innerHTML = `${computerChoice} beats ${playerChoice}. Point for computer!`;
@@ -56,6 +59,7 @@ function computerWin(playerChoice, computerChoice) {
 
 function draw(playerChoice, computerChoice) {
   // no points for a draw/tie, no need to update scoreboard
+  displayPlayerChoice(playerChoice); //displaying selected choice
   playerChoice = capFirstLetter(playerChoice); //cap first letter of RPS for player
   computerChoice = capFirstLetter(computerChoice); //cap first letter of RPS for computer
   outcome.innerHTML = `${playerChoice} equals ${computerChoice}. Draw! No points.`;
@@ -89,8 +93,23 @@ function rpsGame(userChoice) {
   //   console.log(`player choice: ${userChoice}`);
   //   console.log(`computer choice: ${computerChoice}`);
 }
-
 //rpsGame("rock");  //chckpoint output playerchoice and computerchoice
+
+function displayPlayerChoice(playerChoice) {
+  playerChose_Div.innerHTML = "";
+  const playerChoice_Img = document.createElement("img"); // we are going remove & update each time
+
+  if (playerChoice === "rock") {
+    playerChoice_Img.src = "images/cuterock.png";
+  } else if (playerChoice === "paper") {
+    playerChoice_Img.src = "images/cutepaper.png";
+  } else if (playerChoice === "scissors") {
+    playerChoice_Img.src = "images/cutescissors.png";
+  }
+  playerChose_Div.appendChild(playerChoice_Img);
+  return;
+}
+// displayPlayerChoice(playerChoice);
 
 function endGame() {
   //is this where i'm messing up?
