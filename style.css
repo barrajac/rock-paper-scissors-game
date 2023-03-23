@@ -127,12 +127,12 @@ img {
     gap: 20%;
 }
 
-.box1 {
+.box-one {
     display: flex;
     flex-flow: column nowrap;
 }
 
-.box2 {
+.box-two {
     display: flex;
     flex-flow: column nowrap;
 }
@@ -182,7 +182,7 @@ img {
 .game-over-window {
     position: absolute;
     z-index: 1;
-    top:38%;
+    top:51%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 60%;

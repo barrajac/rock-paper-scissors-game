@@ -4,14 +4,14 @@ let computerScore = 0;
 const playerScoreSpan = document.querySelector("#player-score");
 const computerScoreSpan = document.querySelector("#computer-score");
 const scoreBoardDiv = document.querySelector(".score-board");
-// const playerChoiceImg = document.querySelector(".player-choice-img");
-// const computerChoiceImg = document.querySelector(".computer-choice-img");
 const outcome = document.querySelector(".outcome > h6");
 const rockDiv = document.querySelector("#rock");
 const paperDiv = document.querySelector("#paper");
 const scissorsDiv = document.querySelector("#scissors");
 const playAgainBtn = document.querySelector("#play-again-btn");
 const gameOverWindow = document.querySelector(".game-over-window");
+const gameSummary = document.querySelector(".game-summary");
+
 const choicesArray = ["rock", "paper", "scissors"];
 
 function capFirstLetter(string) {
@@ -35,6 +35,9 @@ function playerWin(playerChoice, computerChoice) {
   playerChoice = capFirstLetter(playerChoice); //cap first letter of RPS for player
   computerChoice = capFirstLetter(computerChoice); //cap first letter of RPS for computer
   outcome.innerHTML = `${playerChoice} beats ${computerChoice}. Point for you!`;
+  if (playerScore === 5) {
+    endGame();
+  }
   //   console.log("Player won");
   //   console.log(playerScore);
 }
@@ -46,6 +49,9 @@ function computerWin(playerChoice, computerChoice) {
   playerChoice = capFirstLetter(playerChoice); //cap first letter of RPS for player
   computerChoice = capFirstLetter(computerChoice); //cap first letter of RPS for computer
   outcome.innerHTML = `${computerChoice} beats ${playerChoice}. Point for computer!`;
+  if (computerScore === 5) {
+    endGame();
+  }
 }
 
 function draw(playerChoice, computerChoice) {
@@ -86,41 +92,31 @@ function rpsGame(userChoice) {
 
 //rpsGame("rock");  //chckpoint output playerchoice and computerchoice
 
-// function endGame() {
-// if (playerScore === 5 || computerScore === 5) {
-//display Game Over screen by changing display from none to block to move it fwd
-//store gameover div in variable
-//add innerHTML to include a <p> with temperate literal MSG where:
-//      if player score > computer score, then msg states You win!
-// but if player score < computer score, then msg states You lost!
-// and if player score === computer score, then msg It's a tie!
-//reset playerScore to zero
-//reset computerScore to zero
-// }
-// }
 function endGame() {
-  gameOverWindow.style.display = "block"; //is this where i'm messing up?
+  //is this where i'm messing up?
   if (playerScore === 5 || computerScore === 5) {
     if (playerScore > computerScore) {
-      resultDiv.innerHTML = "Congratulations, you won the game!";
+      gameSummary.innerHTML = "Congratulations, you won the game!";
     } else {
-      resultDiv.innerHTML = "Sorry, you lost the game!";
+      gameSummary.innerHTML = "Sorry, you lost the game!";
     }
-  } else if (playerScore === 5 && computerScore === 5) {
-    resultDiv.innerHTML = "It was a draw!";
+    // playerScore = 0;    //lines 117-121 move to restart game fxn, so user can see finalScore
+    // computerScore = 0;
+    // computerScoreSpan.innerHTML = computerScore; //update scoreboard
+    // playerScoreSpan.innerHTML = playerScore; //update scoreboard
+    gameOverWindow.style.display = "block";
+    return;
   }
-  playerScore = 0;
-  computerScore = 0;
-  return;
 }
-endGame();
 
 function restartGame() {
-  gameOverWindow.style.display = "none";
+  gameOverWindow.style.display = "none"; //set gameOverWindow display:none to reset it to not visible
+  playerScore = 0;
+  computerScore = 0;
+  computerScoreSpan.innerHTML = computerScore; //update scoreboard
+  playerScoreSpan.innerHTML = playerScore; //update scoreboard
   return;
 }
-
-// function replay() globally //create eventListener that will set game over screen display back to none with "play again" button "click"
 
 //event Listener for intro screen
 // function startGame() globally //create eventListener that will set Start screen display back to none with "Play" button "click"
