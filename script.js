@@ -12,6 +12,7 @@ const playAgainBtn = document.querySelector("#play-again-btn");
 const gameOverWindow = document.querySelector(".game-over-window");
 const gameSummary = document.querySelector(".game-summary");
 const playerChose_Div = document.querySelector(".choice-img-one");
+const computerChose_Div = document.querySelector(".choice-img-two");
 
 const choicesArray = ["rock", "paper", "scissors"];
 
@@ -33,7 +34,8 @@ function playerWin(playerChoice, computerChoice) {
   playerScore++; //increment winner score
   playerScoreSpan.innerHTML = playerScore; //update scoreboard
   computerScoreSpan.innerHTML = computerScore; //update scoreboard
-  displayPlayerChoice(playerChoice);
+  displayPlayerChoice(playerChoice); //display player selected choice
+  displayComputerChoice(computerChoice); //display random computer selection
   playerChoice = capFirstLetter(playerChoice); //cap first letter of RPS for player
   computerChoice = capFirstLetter(computerChoice); //cap first letter of RPS for computer
   outcome.innerHTML = `${playerChoice} beats ${computerChoice}. Point for you!`;
@@ -48,7 +50,8 @@ function computerWin(playerChoice, computerChoice) {
   computerScore++; //increment winner score
   computerScoreSpan.innerHTML = computerScore; //update scoreboard
   playerScoreSpan.innerHTML = playerScore; //update scoreboard
-  displayPlayerChoice(playerChoice);
+  displayPlayerChoice(playerChoice); //display player selected choice
+  displayComputerChoice(computerChoice); //display random computer selection
   playerChoice = capFirstLetter(playerChoice); //cap first letter of RPS for player
   computerChoice = capFirstLetter(computerChoice); //cap first letter of RPS for computer
   outcome.innerHTML = `${computerChoice} beats ${playerChoice}. Point for computer!`;
@@ -59,7 +62,8 @@ function computerWin(playerChoice, computerChoice) {
 
 function draw(playerChoice, computerChoice) {
   // no points for a draw/tie, no need to update scoreboard
-  displayPlayerChoice(playerChoice); //displaying selected choice
+  displayPlayerChoice(playerChoice); //display player selected choice
+  displayComputerChoice(computerChoice); //display random computer selection
   playerChoice = capFirstLetter(playerChoice); //cap first letter of RPS for player
   computerChoice = capFirstLetter(computerChoice); //cap first letter of RPS for computer
   outcome.innerHTML = `${playerChoice} equals ${computerChoice}. Draw! No points.`;
@@ -109,7 +113,20 @@ function displayPlayerChoice(playerChoice) {
   playerChose_Div.appendChild(playerChoice_Img);
   return;
 }
-// displayPlayerChoice(playerChoice);
+
+function displayComputerChoice(computerChoice) {
+  computerChose_Div.innerHTML = "";
+  const computerChoice_Img = document.createElement("img");
+  if (computerChoice === "rock") {
+    computerChoice_Img.src = "images/cuterock.png";
+  } else if (computerChoice === "paper") {
+    computerChoice_Img.src = "images/cutepaper.png";
+  } else if (computerChoice === "scissors") {
+    computerChoice_Img.src = "images/cutescissors.png";
+  }
+  computerChose_Div.appendChild(computerChoice_Img);
+  return;
+}
 
 function endGame() {
   //is this where i'm messing up?
