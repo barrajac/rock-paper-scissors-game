@@ -21,15 +21,17 @@ const gameOverImg_Div = document.querySelector(".game-over-img");
 
 const choicesArray = ["rock", "paper", "scissors"];
 
+//13. start window appears by default, this fxn makes its display disappear
 function playGame() {
   startContainer.style.display = "none";
 }
 
+//14. Capitalizes the first letter of a string
 function capFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-//3. Generate random RPS choice for Computer
+//3. created a fxn that Generates a random RPS choice for Computer using similar approach as Battleship project
 function getComputerChoice() {
   const randomIndex = Math.floor(Math.random() * choicesArray.length); //array has 3 elements
   let randomChoice = choicesArray[randomIndex];
@@ -38,7 +40,7 @@ function getComputerChoice() {
 }
 // console.log(getComputerChoice());  //checkpoint: random choice on console
 
-//7. what happens when we win, lose, or draw per round, user score should increment
+//5. what happens when we win, lose, or draw per round, user score should increment
 function playerWin(playerChoice, computerChoice) {
   playerScore++; //increment winner score
   playerScoreSpan.innerHTML = playerScore; //update scoreboard
@@ -55,6 +57,7 @@ function playerWin(playerChoice, computerChoice) {
   //   console.log(playerScore);
 }
 
+//6.
 function computerWin(playerChoice, computerChoice) {
   computerScore++; //increment winner score
   computerScoreSpan.innerHTML = computerScore; //update scoreboard
@@ -69,6 +72,7 @@ function computerWin(playerChoice, computerChoice) {
   }
 }
 
+//7.
 function draw(playerChoice, computerChoice) {
   // no points for a draw/tie, no need to update scoreboard
   displayPlayerChoice(playerChoice); //display player selected choice
@@ -108,6 +112,7 @@ function rpsGame(userChoice) {
 }
 //rpsGame("rock");  //chckpoint output playerchoice and computerchoice
 
+//11.
 function displayPlayerChoice(playerChoice) {
   playerChose_Div.innerHTML = "";
 
@@ -126,6 +131,7 @@ function displayPlayerChoice(playerChoice) {
   return;
 }
 
+//10.
 function displayComputerChoice(computerChoice) {
   computerChose_Div.innerHTML = "";
 
@@ -144,6 +150,7 @@ function displayComputerChoice(computerChoice) {
   return;
 }
 
+//8.
 function endGame() {
   if (playerScore === 5 || computerScore === 5) {
     if (playerScore > computerScore) {
@@ -158,6 +165,7 @@ function endGame() {
   }
 }
 
+//9.
 function restartGame() {
   gameOverWindow.style.display = "none"; //set gameOverWindow display:none to reset it to not visible
   playerScore = 0;
@@ -167,6 +175,7 @@ function restartGame() {
   return;
 }
 
+//12.
 function displayGameOverImg() {
   gameOverImg_Div.innerHTML = "";
   const gameOver_Img = document.createElement("img");
@@ -179,33 +188,34 @@ function displayGameOverImg() {
   return;
 }
 
-//2. Make event listeners for selecting RPS choice with CLICK, decided to define fxn rps game above
-// Make rock clickable
+//2. Create event listeners for selecting RPS choice with CLICK, fxns args are defined above rps game above
+// a. Make rock clickable
 rockDiv.addEventListener("click", function () {
   rpsGame("rock");
   //   addPlayerChoiceImg("rock");
   //   console.log("hey you clicked on rock");
 });
 
-// make paper clickable
+// b. make paper clickable
 paperDiv.addEventListener("click", function () {
   rpsGame("paper");
   //   addPlayerChoiceImg("paper");
   //   console.log("hey you clicked on paper");
 });
 
-// make scissors clickable
+// c. make scissors clickable
 scissorsDiv.addEventListener("click", function () {
   rpsGame("scissors");
   //   addPlayerChoiceImg("scissors");
   //   console.log("hey you clicked on scissors")
 });
 
+// d. create START GAME PLAY button that on click, start window disappears, allows to proceed with game
 startBtn.addEventListener("click", function () {
   playGame();
 });
 
-// make replay button so that on click the gameover window disappears, scores are reset, to play again
+// e. create PLAY AGAIN button so that on click the gameover window disappears, scores are reset, to play again
 playAgainBtn.addEventListener("click", function () {
   restartGame();
   location.reload();
