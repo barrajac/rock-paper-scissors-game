@@ -8,6 +8,8 @@ const outcome = document.querySelector(".outcome > h6");
 const rockDiv = document.querySelector("#rock");
 const paperDiv = document.querySelector("#paper");
 const scissorsDiv = document.querySelector("#scissors");
+const choseText_One = document.querySelector(".chose-text-one");
+const choseText_Two = document.querySelector(".chose-text-two");
 const playAgainBtn = document.querySelector("#play-again-btn");
 const gameOverWindow = document.querySelector(".game-over-window");
 const gameSummary = document.querySelector(".game-summary");
@@ -102,6 +104,10 @@ function rpsGame(userChoice) {
 
 function displayPlayerChoice(playerChoice) {
   playerChose_Div.innerHTML = "";
+
+  const choseText_One = document.querySelector(".chose-text-one");
+  choseText_One.style.color = "#303030";
+
   const playerChoice_Img = document.createElement("img"); // we are going remove & update each time
   if (playerChoice === "rock") {
     playerChoice_Img.src = "images/cuterock.png";
@@ -116,6 +122,10 @@ function displayPlayerChoice(playerChoice) {
 
 function displayComputerChoice(computerChoice) {
   computerChose_Div.innerHTML = "";
+
+  const choseText_Two = document.querySelector(".chose-text-two");
+  choseText_Two.style.color = "#303030";
+
   const computerChoice_Img = document.createElement("img");
   if (computerChoice === "rock") {
     computerChoice_Img.src = "images/cuterock.png";
@@ -129,10 +139,9 @@ function displayComputerChoice(computerChoice) {
 }
 
 function endGame() {
-  //is this where i'm messing up?
   if (playerScore === 5 || computerScore === 5) {
     if (playerScore > computerScore) {
-      gameSummary.innerHTML = "You won the game!";
+      gameSummary.innerHTML = "Yay! You won!";
       displayGameOverImg();
     } else {
       gameSummary.innerHTML = "Sorry, you lost the game!";
@@ -162,7 +171,7 @@ function displayGameOverImg() {
   if (computerScore === 5) {
     gameOver_Img.src = "images/sadtp.png";
   } else if (playerScore === 5) {
-    gameOver_Img.src = "images/cutefire.png";
+    gameOver_Img.src = "images/win.png";
   }
   gameOverImg_Div.appendChild(gameOver_Img);
   return;

@@ -103,57 +103,76 @@ img {
 }
 
 .results-container {
-    display: flex;
-    justify-content: center;
+    display: inline-flex;
+    justify-content: space-evenly;
     flex-flow: row nowrap;
-    padding-top: 3%;
-    gap: 20%;
+    /* margin: 20%; */
+    /* padding-top: 3%;
+    gap: 20%; */
+}
+
+.box-a {
+    display: flex;
+    flex-direction: row nowrap;
+    justify-content: space-between;
+    
 }
 
 .box-one {
-    display: flex;
-    flex-flow: column nowrap;
+    align-items: center;
+    flex-flow: column;
 }
 
 .box-two {
-    display: flex;
-    flex-flow: column nowrap;
+    align-items: center;
+    flex-flow: column;
 }
 
 .choice-img-one {
-    display: flex;
-    /* justify-content: center; */
-    padding-top: 5%;
-    max-width: 70%;
+    display: inline-block;
+    max-width: 60%;
     margin-left: 15%;
+     /* padding-top: 5%; */
 }
 
 .choice-img-two {
-    display: flex;
-    /* justify-content: center; */
-    padding-top: 5%;
-    max-width: 70%;
-    margin-left: 17%;
+    display: inline-block;
+    max-width: 60%;
+    margin-left: 15%;
+    /* padding-top: 5%; */
 }
 
 .outcome {
     display: flex;
-    /* width: 80%; */
-    justify-content: space-evenly;
-    flex-flow: row nowrap;
-    padding-top: 5%
+    justify-content: flex start;
+    flex-flow: column nowrap;
+    margin-bottom: 20%
+        /* width: 80%; */
+    /* justify-content: space-evenly; */
 }
 
-.chose-text {
+.chose-text-one {
     text-align: center;
-    font-size: 36px;
+    font-size: 34px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* color: #303030; */
+    color: #6bbfec;
+
+}
+
+.chose-text-two {
+    text-align: center;
+    font-size: 34px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* color: #303030; */
+    color: #6bbfec;
 }
 
 .outcome {
-    /* text-align: center; */
+    text-align: center;
     font-size: 50px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #303030;
 }
 
 
@@ -194,9 +213,9 @@ img {
     
 }
 
+
 #play-again-btn {
     margin: 0 auto; 
-    margin-top: 5%;
     padding:14px 16px;
     background-color:blue;
     color:white;
@@ -206,4 +225,14 @@ img {
     border-radius: 10%;
     opacity: 1;
     /* background-color: #3F4C5C; */
+}
+
+#play-again-btn:hover {
+    cursor: pointer;
+    background: rgb(45, 168, 229);
+}
+.game-over-screen {
+    display: flex; 
+    justify-items: flex-start
+    ;
 }
