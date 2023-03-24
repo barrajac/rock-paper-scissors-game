@@ -1,4 +1,6 @@
 //1. cached my elements into variables
+const startBtn = document.querySelector(".start-btn");
+const startContainer = document.querySelector(".start-container");
 let playerScore = 0; //had to chng const to let
 let computerScore = 0;
 const playerScoreSpan = document.querySelector("#player-score");
@@ -18,6 +20,11 @@ const computerChose_Div = document.querySelector(".choice-img-two");
 const gameOverImg_Div = document.querySelector(".game-over-img");
 
 const choicesArray = ["rock", "paper", "scissors"];
+
+function playGame() {
+  startContainer.style.display = "none";
+  //   startContainer.style.zIndex = "-101";
+}
 
 function capFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -177,9 +184,6 @@ function displayGameOverImg() {
   return;
 }
 
-//event Listener for intro screen
-// function startGame() globally //create eventListener that will set Start screen display back to none with "Play" button "click"
-
 //2. Make event listeners for selecting RPS choice with CLICK, decided to define fxn rps game above
 // Make rock clickable
 rockDiv.addEventListener("click", function () {
@@ -200,6 +204,10 @@ scissorsDiv.addEventListener("click", function () {
   rpsGame("scissors");
   //   addPlayerChoiceImg("scissors");
   //   console.log("hey you clicked on scissors")
+});
+
+startBtn.addEventListener("click", function () {
+  playGame();
 });
 
 // make replay button so that on click the gameover window disappears, scores are reset, to play again

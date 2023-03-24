@@ -214,10 +214,9 @@ img {
 }
 
 
-#play-again-btn {
+.play-again-btn {
     margin: 0 auto; 
     padding:14px 16px;
-    background-color:blue;
     color:white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
@@ -227,12 +226,59 @@ img {
     /* background-color: #3F4C5C; */
 }
 
-#play-again-btn:hover {
+.play-again-btn:hover {
     cursor: pointer;
     background: rgb(45, 168, 229);
 }
+
 .game-over-screen {
     display: flex; 
     justify-items: flex-start
     ;
+}
+
+.start-container {
+    position: absolute;
+    z-index: 2;
+    top:56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 85%;
+    background-color: aliceblue;
+    border-radius: 10%;
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #3F4C5C;
+    padding: 15px;
+    /* display: none; will switch to none upon play btn click */
+    display: block;
+}
+
+.start-img {
+    height: 50%;
+    width: 50%;
+}
+
+.start-btn {
+    margin: 0 auto; 
+    padding:14px 16px;
+    color:white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    background-color: #3F4C5C;
+    border-radius: 10%;
+    opacity: 1;
+}
+
+.start-btn {
+    display: block;
+    margin-left: 45%;
+    margin-top: 5%;
+}
+
+.start-btn:hover {
+    cursor: pointer;
+    background: rgb(45, 168, 229);
 }
