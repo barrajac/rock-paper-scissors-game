@@ -223,7 +223,6 @@ img {
     background-color: #3F4C5C;
     border-radius: 10%;
     opacity: 1;
-    /* background-color: #3F4C5C; */
 }
 
 .play-again-btn:hover {
@@ -254,6 +253,7 @@ img {
     padding: 15px;
     /* display: none; will switch to none upon play btn click */
     display: block;
+    
 }
 
 .start-img {

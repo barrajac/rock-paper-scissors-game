@@ -12,7 +12,7 @@ const paperDiv = document.querySelector("#paper");
 const scissorsDiv = document.querySelector("#scissors");
 const choseText_One = document.querySelector(".chose-text-one");
 const choseText_Two = document.querySelector(".chose-text-two");
-const playAgainBtn = document.querySelector("#play-again-btn");
+const playAgainBtn = document.querySelector(".play-again-btn");
 const gameOverWindow = document.querySelector(".game-over-window");
 const gameSummary = document.querySelector(".game-summary");
 const playerChose_Div = document.querySelector(".choice-img-one");
@@ -23,7 +23,6 @@ const choicesArray = ["rock", "paper", "scissors"];
 
 function playGame() {
   startContainer.style.display = "none";
-  //   startContainer.style.zIndex = "-101";
 }
 
 function capFirstLetter(string) {
@@ -154,10 +153,6 @@ function endGame() {
       gameSummary.innerHTML = "Sorry, you lost the game!";
       displayGameOverImg();
     }
-    // playerScore = 0;    //lines 117-121 move to restart game fxn, so user can see finalScore
-    // computerScore = 0;
-    // computerScoreSpan.innerHTML = computerScore; //update scoreboard
-    // playerScoreSpan.innerHTML = playerScore; //update scoreboard
     gameOverWindow.style.display = "block";
     return;
   }
@@ -213,4 +208,6 @@ startBtn.addEventListener("click", function () {
 // make replay button so that on click the gameover window disappears, scores are reset, to play again
 playAgainBtn.addEventListener("click", function () {
   restartGame();
+  location.reload();
+  //   console.log("You are pressing Play AGAIN button");
 });
